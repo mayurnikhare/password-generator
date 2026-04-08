@@ -1,72 +1,29 @@
-# 🔐 Password Generator (Python)
+# 🔐 Password Manager Web App
 
-A secure and customizable password generator built using Python. This project provides both a **Command-Line Interface (CLI)** and a **Graphical User Interface (GUI)** using Tkinter for flexible user interaction.
+A full-stack **Password Manager Web Application** built using Flask that allows users to securely generate, store, and manage passwords with a modern and responsive UI.
 
 ---
 
 ## 🚀 Features
 
-### 🔹 CLI Version
-
-* Generate passwords of custom length
-* Option to include uppercase letters, numbers, and symbols
-* Simple and fast terminal-based interaction
-
-### 🔹 GUI Version (Tkinter)
-
-* User-friendly graphical interface
-* Input field for password length
-* Checkboxes for character selection
-* One-click password generation
-* Displays generated password instantly
+* 🔑 User Authentication (Login/Register)
+* 🔐 Secure Password Hashing
+* 🎯 Custom Password Generator (length, uppercase, digits, symbols)
+* 📊 Password History Dashboard (Last 5 passwords)
+* 📋 Copy to Clipboard functionality
+* 💪 Password Strength Indicator
+* 🎨 Modern UI with Bootstrap + Glassmorphism + Gradient Effects
 
 ---
 
 ## 🛠️ Technologies Used
 
 * Python
-* `random` module
-* `string` module
-* Tkinter (for GUI)
-
----
-
-## ▶️ How to Run
-
-### 🔹 Run CLI Version
-
-```bash
-python main.py
-```
-
-### 🔹 Run GUI Version
-
-```bash
-python gui.py
-```
-
----
-
-## 💡 Example (CLI)
-
-```
-=== Password Generator ===
-Enter password length: 8
-Include uppercase letters? (y/n): y
-Include numbers? (y/n): y
-Include symbols? (y/n): y
-
-Generated Password: A@3kLm9!
-```
-
----
-
-## 🖥️ GUI Preview
-
-* Enter password length
-* Select options using checkboxes
-* Click "Generate"
-* Get instant password output
+* Flask
+* SQLite
+* HTML, CSS
+* Bootstrap
+* JavaScript
 
 ---
 
@@ -74,22 +31,72 @@ Generated Password: A@3kLm9!
 
 ```
 password-generator/
-│── main.py   # CLI version
-│── gui.py    # GUI version (Tkinter)
-│── README.md
+│
+├── app.py
+├── generator.py
+├── database.db
+│
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   ├── login.html
+│   └── register.html
+│
+└── static/
 ```
 
 ---
 
-## 🔮 Future Improvements
+## ⚙️ Installation & Setup
 
-* Add password strength indicator 🔐
-* Add copy-to-clipboard feature 📋
-* Use `secrets` module for better security
-* Improve GUI design (modern UI)
+1. Clone the repository:
+
+```
+git clone https://github.com/your-username/password-generator.git
+cd password-generator
+```
+
+2. Install dependencies:
+
+```
+pip install flask flask-login werkzeug
+```
+
+3. Run the application:
+
+```
+python app.py
+```
+
+4. Open in browser:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## 🔐 Security Features
+
+* Passwords are hashed using Werkzeug
+* User-specific password storage
+* Input validation for secure operations
+
+---
+
+## 🚀 Future Improvements
+
+* 👁 Show/Hide password toggle
+* 🗑 Delete saved passwords
+* 🌐 Deploy online (Render / Railway)
+* 🔒 Encrypt stored passwords
 
 ---
 
 ## 👨‍💻 Author
 
-Mayur Nikhare
+**Mayur Nikhare**
+
+---
+
+⭐ If you like this project, give it a star!
