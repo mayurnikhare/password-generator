@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="glass p-4 shadow mx-auto" style="max-width: 450px;">
+
+<h3 class="text-center mb-4">
+    Password Generator
+</h3>
+
+<form method="POST">
+
+    <input type="number" name="length" class="form-control mb-3" placeholder="Enter Length" required>
+
+    <div class="form-check">
+        <input type="checkbox" name="upper" class="form-check-input">
+        <label class="form-check-label">Uppercase</label>
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" name="digits" class="form-check-input">
+        <label class="form-check-label">Numbers</label>
+    </div>
+
+    <div class="form-check mb-3">
+        <input type="checkbox" name="symbols" class="form-check-input">
+        <label class="form-check-label">Symbols</label>
+    </div>
+
+    <button class="btn btn-primary w-100 btn-glow">Generate</button>
+</form>
+
+{% if password %}
+<div class="alert alert-light text-dark mt-3 text-center" id="passwordBox">
+    {{ password }}
+</div>
+
+<button onclick="copyPassword()" class="btn btn-success w-100 btn-glow mt-2">
+    Copy Password
+</button>
+
+<p id="strength" class="mt-2 text-center"></p>
+{% endif %}
+
+{% if history %}
+<div class="mt-4">
+
+    <h5 class="mb-3">🔒 Recent Passwords</h5>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle shadow rounded overflow-hidden custom-table">
+            <thead class="table-secondary text-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in history %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        <span class="password-text">{{ p[0] }}</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success" onclick="copyText('{{ p[0] }}')">
+                            Copy
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endif %}
+
+</div>
+
+<script>
+function copyPassword() {
+    const text = document.getElementById("passwordBox").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+}
+
+// Strength checker
+window.onload = function() {
+    const password = document.getElementById("passwordBox");
+    if (password) {
+        let text = password.innerText;
+        let strength = "Weak";
+
+        if (text.length > 8) strength = "Medium";
+        if (/[A-Z]/.test(text) && /[0-9]/.test(text) && text.length > 10)
+            strength = "Strong";
+
+        document.getElementById("strength").innerText = "Strength: " + strength;
+    }
+}
+
+function copyText(text) {
+    navigator.clipboard.writeText(text);
+    alert("Password copied!");
+}
+
+</script>
+
+{% endblock %}
