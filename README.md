@@ -93,6 +93,12 @@ http://127.0.0.1:5000
 
 ---
 
+## 🌐 Live Demo
+
+🔗 https://password-generator-b1qg.onrender.com
+
+---
+
 ## 👨‍💻 Author
 
 **Mayur Nikhare**
